@@ -2,15 +2,16 @@
 <html>
 <head>
   <meta charset="utf-8">
+<style type="text/css">
+<!--
+.big_font { font-size: 50px; }
+-->
+</style>
 </head>
 <body>
   <div id="app">
-    <ul>
-      <li v-for="(item, index) in items">
-        {{ index + 1 }}.
-        {{ item.title }}
-      </li>
-    </ul>
+    <span v-bind:class="{ big_font: font_flag }">Hello World</span>
+    <button v-on:click="change">Change font size bigger</button>
   </div>
 
   <script src="https://unpkg.com/vue"></script>
@@ -18,11 +19,12 @@
     var app = new Vue({
       el: '#app',
       data: {
-        items: [
-          { title: 'Hello' },
-          { title: 'Vue' },
-          { title: 'js' },
-          ]
+        font_flag: false
+      },
+      methods: {
+        change: function() {
+          this.font_flag = !this.font_flag;
+        }
       }
     })
   </script>
